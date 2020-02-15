@@ -13,6 +13,6 @@ Create a VSCode workspace configuration, where subdirectories are separate proje
 Execute `create-vscode-workspace`, passing a list of subdirectories to add to the workspace:
 
 ```bash
-npx create-vscode-workspace -- backend frontend infrastructure
+npx create-vscode-workspace backend frontend infrastructure
 open workspace.code-workspace
 ```
