@@ -5,9 +5,11 @@
   "license": "MIT",
   "version": "0.0.1",
   "bin": {
-    "create-vscode-workspace": "./bin/create-vscode-workspace"
+    "create-vscode-workspace": "./bin/create-vscode-workspace.js"
   },
   "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

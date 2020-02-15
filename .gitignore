@@ -1,6 +1,10 @@
 # ignore node dependencies
 node_modules/
 
+# ignore build artifacts
+*.js
+*.d.ts
+
 # ignore vscode configuration
 *.code-workspace
 .vscode/
