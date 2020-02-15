@@ -20,9 +20,7 @@ const ROOT_SETTINGS_TEMPLATE = {
     'files.exclude': {}
 };
 
-const PYTHON_PROJECT_SETTINGS_TEMPLATE = {
-    'python.pythonPath': ''
-};
+const PROJECT_SETTINGS_TEMPLATE = {};
 
 function workspaceConfig(dir: string, projects: string[] = []) {
     const folders = [{ path: dir }];
@@ -50,7 +48,7 @@ function rootSettingsConfig(projects: string[]) {
 }
 
 function projectSettingsConfig(project: string) {
-    return Object.assign({}, PYTHON_PROJECT_SETTINGS_TEMPLATE);
+    return Object.assign({}, PROJECT_SETTINGS_TEMPLATE);
 }
 
 function createJsonFile(file: string, contents: any) {
@@ -63,22 +61,22 @@ function createJsonFile(file: string, contents: any) {
 }
 
 function run() {
-    const pwd = process.env.PWD;
+    const cwd = process.cwd();
     const projects = process.argv.slice(2);
 
     createJsonFile(
-        path.join(pwd, WORKSPACE_FILENAME),
-        workspaceConfig(pwd, projects)
+        path.join(cwd, WORKSPACE_FILENAME),
+        workspaceConfig(cwd, projects)
     );
 
     createJsonFile(
-        path.join(pwd, SETTINGS_FILENAME),
+        path.join(cwd, SETTINGS_FILENAME),
         rootSettingsConfig(projects)
     );
 
     projects.forEach(project => {
         createJsonFile(
-            path.join(pwd, project, SETTINGS_FILENAME),
+            path.join(cwd, project, SETTINGS_FILENAME),
             projectSettingsConfig(project)
         );
     });
